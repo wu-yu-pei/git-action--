@@ -25,6 +25,15 @@ jobs:
       - name: goto src
         run: cd ./src
       
+      # ls
+      - name: ls file
+        run: ls
+        
+      # pwd
+      - name: pwd
+        run: pwd
+        
+      # node version  
       - name: node version
         run: node -v
         
