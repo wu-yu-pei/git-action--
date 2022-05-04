@@ -29,6 +29,10 @@ jobs:
       - name: ls file
         run: ls
         
+      # rm package-lock.json
+      - name: rm lockfile
+        run: rm package-lock.json
+      
       # pwd
       - name: pwd
         run: pwd
