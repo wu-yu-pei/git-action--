@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growing-设计模式-单列模式</title>
+    <link href="../css/theme//prism-one-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="icon" href="../../favicon.ico" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+    <link rel="stylesheet" href="../css/newsprint.css" />
+    <link rel="stylesheet" href="../css/article.css" />
+  </head>
+
+  <body>
+    <div class="top">
+      <div class="nav">
+        <div class="home">
+          <a href="../../pageList/index.html"><img src="../img/list.svg" alt="" /></a>
+        </div>
+        <div class="auther">
+          <span>G</span>
+          <span>r</span>
+          <span>o</span>
+          <span>w</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+          <span>/</span>
+          <span>A</span>
+          <span>r</span>
+          <span>t</span>
+          <span>i</span>
+          <span>c</span>
+          <span>l</span>
+          <span>e</span>
+        </div>
+        <div class="github">
+          <a href="https://github.com/wu-yu-pei"><img src="../img/github.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>设计模式-单列模式</h1>
+      <h3 id="javascript">学习 JavaScript 设计模式与开发实践 之 单列模式</h3>
+<pre><code class="js language-js">//4.1 一个最简单的单列模式的实现
+function Singleton(name) {
+this.name = name;
+this.instance = null;
+}
+Singleton.prototype.getName = function () {
+return this.name;
+};
+Singleton.getInstance = function (name) {
+if (!this.instance) {
+  this.instance = new Singleton(name);
+}
+return this.instance;
+};
+
+var a = Singleton.getInstance('wuyupei');
+var b = Singleton.getInstance('xiaobai');
+console.log(a === b); // true
+
+//4.2 或者利用 --闭包--
+function Singleton(name) {
+this.name = name;
+}
+Singleton.prototype.getName = function () {
+return this.name;
+};
+Singleton.getInstance = (function () {
+var instance = null;
+return function (name) {
+  if (!instance) {
+    instance = new Singleton(name);
+  }
+  return instance;
+};
+})();
+var a = Singleton.getInstance('wuyupei');
+var b = Singleton.getInstance('xiaobai');
+console.log(a === b); // true
+
+//4.3透明的单列模式
+var CreateDiv = (function () {
+  var instance;
+
+  // 真正的构造函数  做了两件事情 1. 创建div  2. 保证使用一个实例   3. 看起来很奇怪
+  var CreateDiv = function (html) {
+    if (instance) {
+      return instance;
+    }
+    this.html = html;
+
+    this.init();
+
+    return (instance = this);
+  };
+
+  CreateDiv.prototype.init = function () {
+    var div = document.createElement('div');
+    div.innerHTML = this.html;
+    document.body.appendChild(div);
+  };
+  return CreateDiv;
+})();
+var a = new CreateDiv('nihao');
+var b = new CreateDiv('wohao');
+console.log(a === b);  // true
+
+//4.4 使用代理的方式（刚开始的构造函数既要处理单一实例，又要负责初始化dic  现在 使用一个代理对象 保证构造函数的单一职责）
+function CreateDiv(html) {
+this.html = html;
+this.init();
+}
+
+CreateDiv.prototype.init = function () {
+var div = document.createElement('div');
+div.innerHtml = this.html;
+document.body.appendChild(div);
+};
+
+// 代理
+var proxyCreateDir = (function () {
+var instance;
+return function (html) {
+  if (!instance) {
+    instance = new CreateDiv(html);
+  }
+  return instance;
+};
+})();
+
+var a = new proxyCreateDir('nihao');
+var b = new proxyCreateDir('wohao');
+console.log(a === b);
+************************************************单例模式的核心是确保只有一个实例，并提供全局访问
+
+
+
+// 4.5惰性单列模式
+    ...
+</code></pre>
+      <div class="end">----本文结束----</div>
+      <div class="page">
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/代码回滚操作.html"
+          class="pre"
+        >
+          <img src="../img/leftArrow.svg" alt="" />
+          代码回滚操作
+        </a>
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/防抖和节流.html"
+          class="next"
+        >
+          防抖和节流
+          <img src="../img/rightArrow.svg" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="fotter">
+      <p>All articles written with ❤ by Wu Yupei</p>
+      <p>Github · Gieee · QQ · WeChat</p>
+    </div>
+    <script src="../css/theme/prism.min.js"></script>
+    <script src="../js/click.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/notify.js"></script>
+  </body>
+</html>

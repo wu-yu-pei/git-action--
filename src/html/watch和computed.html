@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growing-watch和computed</title>
+    <link href="../css/theme//prism-one-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="icon" href="../../favicon.ico" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+    <link rel="stylesheet" href="../css/newsprint.css" />
+    <link rel="stylesheet" href="../css/article.css" />
+  </head>
+
+  <body>
+    <div class="top">
+      <div class="nav">
+        <div class="home">
+          <a href="../../pageList/index.html"><img src="../img/list.svg" alt="" /></a>
+        </div>
+        <div class="auther">
+          <span>G</span>
+          <span>r</span>
+          <span>o</span>
+          <span>w</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+          <span>/</span>
+          <span>A</span>
+          <span>r</span>
+          <span>t</span>
+          <span>i</span>
+          <span>c</span>
+          <span>l</span>
+          <span>e</span>
+        </div>
+        <div class="github">
+          <a href="https://github.com/wu-yu-pei"><img src="../img/github.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>watch和computed</h1>
+      <h4 id="watchcomputed">watch 和 computed</h4>
+<blockquote>
+  <p>今天面试被问 watch 和 computed 的区别,我回答的不是很好,今天先来一篇 watch 和 computed 的简单使用</p>
+</blockquote>
+<pre><code class="vue language-vue">&lt;template&gt;
+  &lt;div&gt;{{ name }}--{{ person.one }} -- {{ person.two }}-- {{ person.count }}&lt;/div&gt;
+  &lt;button @click="click"&gt;+&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="js language-js">import { ref, computed, watch, reactive } from 'vue';
+
+let person = reactive({
+  one: 'liu',
+  two: 'xu',
+  count: 1,
+});
+
+let firstName = ref('Wu');
+let lastName = ref('yupei');
+
+let name = computed(() =&gt; firstName.value + lastName.value);
+
+setTimeout(() =&gt; {
+  firstName.value += 1;
+  person.one = 'li';
+}, 1000);
+
+function click() {
+  person.count++;
+}
+
+// getter
+watch(firstName, (o, n) =&gt; {
+  console.log(o, n);
+});
+</code></pre>
+<p>我今天的回答是:
+computed是具有缓存的,只会调用一次, 会优先使用缓存</p>
+<p>watch是用来监听属性的变化,只要变化一次就会执行回调, 如果配置deep的话,会进行深度监听,内部可能是进行了一个递归监听</p>
+<p>回答的非常片面而且很不准确,没有深入了解到真正的区别,明天在更一篇,详细说明computed和watch的区别, 做到对api的知根知地…..</p>
+      <div class="end">----本文结束----</div>
+      <div class="page">
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/expressVskoa.html"
+          class="pre"
+        >
+          <img src="../img/leftArrow.svg" alt="" />
+          expressVskoa
+        </a>
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/无重复字符串的最大长度.html"
+          class="next"
+        >
+          无重复字符串的最大长度
+          <img src="../img/rightArrow.svg" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="fotter">
+      <p>All articles written with ❤ by Wu Yupei</p>
+      <p>Github · Gieee · QQ · WeChat</p>
+    </div>
+    <script src="../css/theme/prism.min.js"></script>
+    <script src="../js/click.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/notify.js"></script>
+  </body>
+</html>

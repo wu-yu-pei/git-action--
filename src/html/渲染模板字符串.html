@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growing-渲染模板字符串</title>
+    <link href="../css/theme//prism-one-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="icon" href="../../favicon.ico" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+    <link rel="stylesheet" href="../css/newsprint.css" />
+    <link rel="stylesheet" href="../css/article.css" />
+  </head>
+
+  <body>
+    <div class="top">
+      <div class="nav">
+        <div class="home">
+          <a href="../../pageList/index.html"><img src="../img/list.svg" alt="" /></a>
+        </div>
+        <div class="auther">
+          <span>G</span>
+          <span>r</span>
+          <span>o</span>
+          <span>w</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+          <span>/</span>
+          <span>A</span>
+          <span>r</span>
+          <span>t</span>
+          <span>i</span>
+          <span>c</span>
+          <span>l</span>
+          <span>e</span>
+        </div>
+        <div class="github">
+          <a href="https://github.com/wu-yu-pei"><img src="../img/github.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>渲染模板字符串</h1>
+      <h4 id="">渲染模板字符串</h4>
+<blockquote>
+  <p>实现一个 render 函数 传入 template data 返回编译后的字符串</p>
+  <p>实现思路: 使用正则表达式 匹配要渲染的mastach 使用eval函数 对代码进行执行,然后替换字符串 返回结果</p>
+</blockquote>
+<pre><code class="js language-js">var str = '{{person["name"]}}今年{{person.age}}岁了!他有{{person.friend.length}}个朋友';
+
+var person = {
+  name: 'wuyupei',
+  age: 10,
+  friend: [1, 2, 3],
+}
+
+function render(template, person) {
+  let res = template.replace(/{{([a-zA-Z.\[\]""]*)}}/g, function (a, b, c) {
+    return eval(b);
+  });
+  console.log(res); // wuyupei今年10岁了!他有3个朋友
+}
+
+render(str, person);
+</code></pre>
+      <div class="end">----本文结束----</div>
+      <div class="page">
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/判断数据js类型.html"
+          class="pre"
+        >
+          <img src="../img/leftArrow.svg" alt="" />
+          判断数据js类型
+        </a>
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/数组转换.html"
+          class="next"
+        >
+          数组转换
+          <img src="../img/rightArrow.svg" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="fotter">
+      <p>All articles written with ❤ by Wu Yupei</p>
+      <p>Github · Gieee · QQ · WeChat</p>
+    </div>
+    <script src="../css/theme/prism.min.js"></script>
+    <script src="../js/click.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/notify.js"></script>
+  </body>
+</html>

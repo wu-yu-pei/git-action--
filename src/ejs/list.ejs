@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growing-List</title>
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="../src/css/animate.min.css" />
+    <link rel="stylesheet" href="../src/css/list.css" />
+    <link rel="stylesheet" href="../src/css/notify.css" />
+  </head>
+
+  <body>
+    <!-- <div class="check">
+      <audio src="./src/audio/audio.wav" class="autio"></audio>
+    </div> -->
+    <div class="top">
+      <div class="nav">
+        <div class="home">
+          <a href="../index.html"
+            ><img src="../src/img/home.svg" alt=""
+          /></a>
+        </div>
+        <div class="auther">
+          <span>G</span>
+          <span>r</span>
+          <span>o</span>
+          <span>w</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+          <span>/</span>
+          <span>L</span>
+          <span>i</span>
+          <span>s</span>
+          <span>t</span>
+        </div>
+        <div class="github">
+          <a href="https://github.com/wu-yu-pei"><img src="../src/img/github.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <ul>
+        <% data.forEach(function(item, index){ %>
+        <li class="">
+          <div class="left">
+            <a href="../src/html/<%= item.name %>.html"><%= index + 1 +'.'+ item.name %></a>
+            <img lazy-src="../src/imgs/<%= (data.length * page) - index %>.jpg" alt="" />
+          </div>
+          <div class="right">
+            <span class="author"> <%= item.ct %></span>
+            <span class="time">Growing</span>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+      <div class="end">----Pagination----</div>
+      <div class="total-page">
+        <% for(let i = totalPage; i > 0; i--) {%>
+        <div class="page-item <%= i==page ? 'active' : '' %>">
+          <a href="./list<%= i %>.html"><%= i %></a>
+        </div>
+        <%}%>
+      </div>
+    </div>
+    <div class="fotter">
+      <p>All articles written with ❤ by Wu Yupei</p>
+      <p>Github · Gieee · QQ · WeChat</p>
+    </div>
+    <script src="../src/js/click.js"></script>
+    <script src="../src/js/scroll.js"></script>
+    <script src="../src/js/list.js"></script>
+    <script src="../src/js/notify.js"></script>
+  </body>
+</html>

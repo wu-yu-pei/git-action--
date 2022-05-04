@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Growing-数组转换</title>
+    <link href="../css/theme//prism-one-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="icon" href="../../favicon.ico" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+    <link rel="stylesheet" href="../css/newsprint.css" />
+    <link rel="stylesheet" href="../css/article.css" />
+  </head>
+
+  <body>
+    <div class="top">
+      <div class="nav">
+        <div class="home">
+          <a href="../../pageList/index.html"><img src="../img/list.svg" alt="" /></a>
+        </div>
+        <div class="auther">
+          <span>G</span>
+          <span>r</span>
+          <span>o</span>
+          <span>w</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+          <span>/</span>
+          <span>A</span>
+          <span>r</span>
+          <span>t</span>
+          <span>i</span>
+          <span>c</span>
+          <span>l</span>
+          <span>e</span>
+        </div>
+        <div class="github">
+          <a href="https://github.com/wu-yu-pei"><img src="../img/github.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>数组转换</h1>
+      <h3 id="">数组转换</h3>
+<p>我们看下题目：打平的数据内容如下：
+let arr = [
+{id: 1, name: '部门 1', pid: 0},
+{id: 2, name: '部门 2', pid: 1},
+{id: 3, name: '部门 3', pid: 1},
+{id: 4, name: '部门 4', pid: 3},
+{id: 5, name: '部门 5', pid: 4},
+]</p>
+<p><strong>代码:</strong></p>
+<pre><code class="js language-js">var obj = [
+  { id: 1, name: 'a', pid: 0 },
+  { id: 2, name: 'b', pid: 1 },
+  { id: 3, name: 'c', pid: 1 },
+  { id: 4, name: 'd', pid: 3 },
+  { id: 5, name: 'e', pid: 2 },
+  { id: 6, name: 'f', pid: 4 },
+];
+
+function foo(arr) {
+  arr.forEach((item) =&gt; {
+    item.children = arr.filter((c) =&gt; c.pid === item.id);
+  });
+
+  return arr[0];
+}
+
+console.log(foo(obj));
+</code></pre>
+<p>其他解法:</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ab00adb8fe04473db6f62ab38ce90c50~tplv-k3u1fbpfcp-zoom-1.awebp?" alt="" /></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/df241a8aab29490cb5c641ad501106c5~tplv-k3u1fbpfcp-no-mark:320:320:320:320.awebp?" alt="" /></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e34c81b8824241ed9957c8aed7328a06~tplv-k3u1fbpfcp-no-mark:320:320:320:320.awebp?" alt="" /></p>
+      <div class="end">----本文结束----</div>
+      <div class="page">
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/渲染模板字符串.html"
+          class="pre"
+        >
+          <img src="../img/leftArrow.svg" alt="" />
+          渲染模板字符串
+        </a>
+        <a
+          href="https://wu-yu-pei.github.io/blog/src/html/手写函数.html"
+          class="next"
+        >
+          手写函数
+          <img src="../img/rightArrow.svg" alt="" />
+        </a>
+      </div>
+    </div>
+    <div class="fotter">
+      <p>All articles written with ❤ by Wu Yupei</p>
+      <p>Github · Gieee · QQ · WeChat</p>
+    </div>
+    <script src="../css/theme/prism.min.js"></script>
+    <script src="../js/click.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/notify.js"></script>
+  </body>
+</html>
