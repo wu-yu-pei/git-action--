@@ -24,7 +24,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: goto src
         run: cd ./src
-
+      
+      - name: node version
+        run: node -v
+        
       # Runs a set of commands using the runners shell
       - name: install dep
         run: npm install
